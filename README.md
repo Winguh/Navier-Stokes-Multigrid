@@ -6,4 +6,4 @@ g++ *.cpp
 
 To run:
 
-./<executable name> <output directory>
+./#executable name# #output directory#
