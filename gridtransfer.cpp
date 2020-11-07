@@ -263,32 +263,32 @@ void ProlongateP(SparseMatrix& P, int n)
         ii = i%np;
         if (inr == 0)
         {
-            P.addEntry(i,inri*n+ii/2,3.0);
+            P.addEntry(i,inri*n+ii/2,9.0);
             if (i%np != 0 && i%np != np-1)
             {
                 if (ii%2 == 0)
                 {
-                    P.addEntry(i,inri*n+ii/2-1,1.0); 
+                    P.addEntry(i,inri*n+ii/2-1,3.0); 
                 }
                 else
                 {
-                    P.addEntry(i,inri*n+ii/2+1,1.0);
+                    P.addEntry(i,inri*n+ii/2+1,3.0);
                 }
 
             }
         }
         else if (inr == np-1)
         {
-            P.addEntry(i,inri*n+ii/2,3.0);
+            P.addEntry(i,inri*n+ii/2,9.0);
             if (i%np != 0 && i%np != np-1)
             {
                 if (ii%2 == 0)
                 {
-                    P.addEntry(i,inri*n+ii/2-1,1.0); 
+                    P.addEntry(i,inri*n+ii/2-1,3.0); 
                 }
                 else
                 {
-                    P.addEntry(i,inri*n+ii/2+1,1.0);
+                    P.addEntry(i,inri*n+ii/2+1,3.0);
                 }
 
             }
@@ -296,37 +296,37 @@ void ProlongateP(SparseMatrix& P, int n)
         }
         else
         {
-            P.addEntry(i,inri*n+ii/2,3.0);
+            P.addEntry(i,inri*n+ii/2,9.0);
             if (inr%2 != 0)
             {
-                P.addEntry(i,inri*n+ii/2+n,1.0);
+                P.addEntry(i,inri*n+ii/2+n,3.0);
                 if (i%np != 0 && i%np != np-1)
                 {
                     if (ii%2 == 0)
                     {
-                        P.addEntry(i,inri*n+ii/2-1,1.0); 
+                        P.addEntry(i,inri*n+ii/2-1,3.0); 
                         P.addEntry(i,inri*n+ii/2-1+n,1.0); 
                     }
                     else
                     {
-                        P.addEntry(i,inri*n+ii/2+1,1.0);
+                        P.addEntry(i,inri*n+ii/2+1,3.0);
                         P.addEntry(i,inri*n+ii/2+n+1,1.0);
                     }
                 }
             }
             else
             {
-                P.addEntry(i,inri*n+ii/2-n,1.0);
+                P.addEntry(i,inri*n+ii/2-n,3.0);
                 if (i%np != 0 && i%np != np-1)
                 {
                     if (ii%2 == 0)
                     {
-                        P.addEntry(i,inri*n+ii/2-1,1.0); 
+                        P.addEntry(i,inri*n+ii/2-1,3.0); 
                         P.addEntry(i,inri*n+ii/2-n-1,1.0); 
                     }
                     else
                     {
-                        P.addEntry(i,inri*n+ii/2+1,1.0);
+                        P.addEntry(i,inri*n+ii/2+1,3.0);
                         P.addEntry(i,inri*n+ii/2-n+1,1.0);
                     }
                 }
@@ -336,5 +336,92 @@ void ProlongateP(SparseMatrix& P, int n)
 
         }
     }
-    P = P/6.0;
+    P = P/16.0;
 }
+
+// void ProlongateP(SparseMatrix& P, int n)
+// {
+//     int np = 2*n;
+//     int inr,inri,ii;
+//     for (int i = 0;i<np*np;i++)
+//     {
+//         inr = i/np;
+//         inri = inr/2;
+//         ii = i%np;
+//         if (inr == 0)
+//         {
+//             P.addEntry(i,inri*n+ii/2,3.0);
+//             if (i%np != 0 && i%np != np-1)
+//             {
+//                 if (ii%2 == 0)
+//                 {
+//                     P.addEntry(i,inri*n+ii/2-1,1.0); 
+//                 }
+//                 else
+//                 {
+//                     P.addEntry(i,inri*n+ii/2+1,1.0);
+//                 }
+
+//             }
+//         }
+//         else if (inr == np-1)
+//         {
+//             P.addEntry(i,inri*n+ii/2,3.0);
+//             if (i%np != 0 && i%np != np-1)
+//             {
+//                 if (ii%2 == 0)
+//                 {
+//                     P.addEntry(i,inri*n+ii/2-1,1.0); 
+//                 }
+//                 else
+//                 {
+//                     P.addEntry(i,inri*n+ii/2+1,1.0);
+//                 }
+
+//             }
+
+//         }
+//         else
+//         {
+//             P.addEntry(i,inri*n+ii/2,3.0);
+//             if (inr%2 != 0)
+//             {
+//                 P.addEntry(i,inri*n+ii/2+n,1.0);
+//                 if (i%np != 0 && i%np != np-1)
+//                 {
+//                     if (ii%2 == 0)
+//                     {
+//                         P.addEntry(i,inri*n+ii/2-1,1.0); 
+//                         P.addEntry(i,inri*n+ii/2-1+n,1.0); 
+//                     }
+//                     else
+//                     {
+//                         P.addEntry(i,inri*n+ii/2+1,1.0);
+//                         P.addEntry(i,inri*n+ii/2+n+1,1.0);
+//                     }
+//                 }
+//             }
+//             else
+//             {
+//                 P.addEntry(i,inri*n+ii/2-n,1.0);
+//                 if (i%np != 0 && i%np != np-1)
+//                 {
+//                     if (ii%2 == 0)
+//                     {
+//                         P.addEntry(i,inri*n+ii/2-1,1.0); 
+//                         P.addEntry(i,inri*n+ii/2-n-1,1.0); 
+//                     }
+//                     else
+//                     {
+//                         P.addEntry(i,inri*n+ii/2+1,1.0);
+//                         P.addEntry(i,inri*n+ii/2-n+1,1.0);
+//                     }
+//                 }
+                
+//             }
+
+
+//         }
+//     }
+//     P = P/6.0;
+// }
